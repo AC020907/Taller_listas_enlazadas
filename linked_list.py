@@ -29,6 +29,29 @@ class LinkedList:
                 return True
             current = current.next
         return False
+
+    def eliminar_inicio(self):
+        if self.head is None:
+            return "La lista está vacía"
+        self.head = self.head.next
+        return None
+
+    def eliminar_por_valor(self, valor):
+        if self.head is None:
+            return "La lista está vacía"
+        
+        if self.head.data == valor:
+            self.head = self.head.next
+            return None
+        
+        current = self.head
+        while current.next is not None:
+            if current.next.data == valor:
+                current.next = current.next.next
+                return None
+            current = current.next
+        
+        return "El valor no se encuentra en la lista"
     def ordenar(self):
         if self.head is None:
             return "la lista esta vacia"
@@ -42,7 +65,7 @@ class LinkedList:
                     index.data= aux
                 index = index.next
             current = current.next
-        def invertirLista(self,lista_enlazada):
+    def invertirLista(self,lista_enlazada):
             current = lista_enlazada.head
             prev = None 
             while current is not None:
@@ -51,12 +74,12 @@ class LinkedList:
                 prev = current
                 current = next_node
             self.head = prev
-        def tamañoLista(self,lista_enlazada):
+    def tamañoLista(self,lista_enlazada):
             current = lista_enlazada.head
             contador = 0
             while current is not None:
                 contador +=1
-                current.next
+                current = current.next
             return contador
 
 
