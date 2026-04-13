@@ -48,7 +48,7 @@ while start != 0:
     elif o == 6:
         lista.recorrer()
     elif o == 7:
-        lista.ordenar()
+        lista.ordenamiento()
         print("Lista ordenada.")
     elif o == 8:
         lista.invertirLista(lista)

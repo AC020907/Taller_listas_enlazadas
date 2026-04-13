@@ -52,19 +52,31 @@ class LinkedList:
             current = current.next
         
         return "El valor no se encuentra en la lista"
-    def ordenar(self):
-        if self.head is None:
-            return "la lista esta vacia"
+    
+    def ordenamiento(self):
         current = self.head
-        while current.next is not None:
-            index = current.next
-            while index is not None:
-                if current.data > index.data:
-                    aux= current.data
-                    current.data= index.data
-                    index.data= aux
-                index = index.next
-            current = current.next
+        prev = None
+        swapped = False
+
+        while current  and current.next is not None:
+            if current.data > current.next.data:
+                next_node = current.next
+                swapped = True
+
+                current.next = next_node.next
+                next_node.next = current
+
+                if prev is None:
+                    self.head = next_node
+                else:
+                    prev.next = next_node
+
+                prev = next_node
+
+            else:
+                prev = current
+                current = current.next
+
     def invertirLista(self,lista_enlazada):
             current = lista_enlazada.head
             prev = None 
