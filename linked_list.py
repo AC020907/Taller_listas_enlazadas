@@ -54,28 +54,30 @@ class LinkedList:
         return "El valor no se encuentra en la lista"
     
     def ordenamiento(self):
-        current = self.head
-        prev = None
-        swapped = False
+        swapped = True
 
-        while current  and current.next is not None:
-            if current.data > current.next.data:
-                next_node = current.next
-                swapped = True
+        while swapped:
+            swapped = False
+            current = self.head
+            prev = None
 
-                current.next = next_node.next
-                next_node.next = current
+            while current is not None and current.next is not None:
+                if current.data > current.next.data:
+                    next_node = current.next
+                    swapped = True
 
-                if prev is None:
-                    self.head = next_node
+                    current.next = next_node.next
+                    next_node.next = current
+
+                    if prev is None:
+                        self.head = next_node
+                    else:
+                        prev.next = next_node
+
+                    prev = next_node
                 else:
-                    prev.next = next_node
-
-                prev = next_node
-
-            else:
-                prev = current
-                current = current.next
+                    prev = current
+                    current = current.next
 
     def invertirLista(self,lista_enlazada):
             current = lista_enlazada.head
